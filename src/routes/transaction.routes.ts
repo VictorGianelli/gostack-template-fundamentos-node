@@ -5,26 +5,17 @@ import Transaction from '../models/Transaction'
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import CreateTransactionService from '../services/CreateTransactionService';
 
-// interface Transaction {
-//   id: string,
-//     title: string,
-//     value: number,
-//     type: string,
-// }
 const transactionRouter = Router();
 const transactionsRepository = new TransactionsRepository();
-
-// const transaction: Transaction[] = [];
-
 
 transactionRouter.get('/', (request, response) => {
   try {
 
-    const transaction = transactionsRepository.all();
+    const transactions = transactionsRepository.all();
     const balance = transactionsRepository.getBalance();
 
     return response.json({
-      transaction,
+      transactions,
       balance,
     })
 
